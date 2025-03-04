@@ -1,0 +1,42 @@
+.bg {
+    background-image: url("https://i.pinimg.com/736x/8c/56/c4/8c56c483afc07fbbc8d1c937c53c26b1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    color: aliceblue;
+}
+
+.bg-2 {
+    background: radial-gradient(circle, rgb(190, 149, 155), rgb(144, 193, 217));
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    padding: 10px;
+    margin: 10px;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.1);
+}
+
+h1, h2 {
+    padding: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
