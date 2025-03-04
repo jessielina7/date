@@ -1,1 +1,156 @@
-# date
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="sectionHome">
+        <div class="bg text-center">
+            <h1>Do you want to go on a date?</h1>
+            <button onclick="display('sectionYesPage')" class="btn btn-danger">Yes</button>
+            <button onclick="display('sectionNo')" class="btn btn-secondary">No</button>
+        </div>
+    </div>
+
+    <div id="sectionNo" style="display: none;">
+        <div class="bg-2 text-center">
+            <h1>Elle is sad!</h1>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTQ5bWg5eXBrbmVzaGhtNW9zNjE5dDJ0YnBqajUxb2t3MHN5OXZ0bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OPU6wzx8JrHna/giphy.gif"/>
+            <br>
+            <button onclick="display('sectionHome')" class="btn btn-primary mt-3">Back</button>
+        </div>
+    </div>
+
+
+    <div id="sectionYesPage" style="display: none;">
+        <div class="bg-2 text-center">
+            <h1>Yay! We are going on a date!!</h1>
+            <h2>Choose a place</h2>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="place-option" onclick="selectPlace('Netflix & Chill')">
+                    <img src="https://www.pngarts.com/files/7/Netflix-And-Chill-Transparent-Background-PNG.png"/>
+                    <p>Netflix & Chill</p>
+                </div>
+                <div class="place-option" onclick="selectPlace('Movie Theater')">
+                    <img src="https://www.pngmart.com/files/5/Movie-PNG-Image.png"/>
+                    <p>Movie Theater</p>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="place-option" onclick="selectPlace('Park')">
+                    <img src="https://static.vecteezy.com/system/resources/previews/019/982/251/original/romantic-couple-sitting-in-park-3d-character-illustration-png.png"/>
+                    <p>Park</p>
+                </div>
+                <div class="place-option" onclick="selectPlace('Restaurant')">
+                    <img src="https://justsoopit.com/wp-content/uploads/2018/01/restaurant.png"/>
+                    <p>Restaurant</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sectionDate" style="display: none;">
+        <div class="bg-2 text-center">
+            <h1>Select a Date</h1>
+            <input type="date" id="datePicker">
+            <button onclick="selectDate()" class="btn btn-primary mt-3">Next</button>
+        </div>
+    </div>
+
+    <div id="sectionOutfit" style="display: none;">
+        <div class="bg-2 text-center">
+            <h1>Choose Your Outfit</h1>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="outfit-option" onclick="selectOutfit('Formal')">
+                    <img src="https://png.pngtree.com/png-clipart/20230313/original/pngtree-couple-with-formal-dress-black-and-wedding-png-image_8985620.png"/>
+                    <p>Formal</p>
+                </div>
+                <div class="outfit-option" onclick="selectOutfit('Casual')">
+                    <img src="https://img.freepik.com/free-vector/korean-drawing-style-character-design_52683-92289.jpg?t=st=1721727785~exp=1721731385~hmac=c23166f751e79b16f0b1487f4cdee726d8c8af5950d40b9a92da73bffaae4910&w=900"/>
+                    <p>Casual</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sectionTime" style="display: none;">
+        <div class="bg-2 text-center">
+            <h1>Select a Time</h1>
+            <input type="time" id="timePicker">
+            <button onclick="selectTime()" class="btn btn-primary mt-3">Next</button>
+        </div>
+    </div>
+
+    <div id="sectionFinalpage" style="display: none;">
+        <div class="bg-2 text-center">
+            <h1>Our Date!!</h1>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmtpeXQycWhia2R1c24zb3YyNmJqd2R6MWk3anNqbXBiZGsweWd0MyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wPnbkEcr2tXiTN0Lmq/giphy.gif"/>
+            <p><strong>Place:</strong> <span id="finalPlace"></span></p>
+            <p><strong>Date:</strong> <span id="finalDate"></span></p>
+            <p><strong>Outfit:</strong> <span id="finalOutfit"></span></p>
+            <p><strong>Time:</strong> <span id="finalTime"></span></p>
+            <button onclick="location.reload()" class="btn btn-success">Plan another date?</button>
+        </div>
+    </div>
+
+    <script>
+        let dateDetails = {
+            place: "",
+            date: "",
+            outfit: "",
+            time: ""
+        };
+
+        function display(sectionId) {
+            document.querySelectorAll("div[id^='section']").forEach(div => div.style.display = "none");
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        function display(sectionId) {
+            document.querySelectorAll("div[id^='section']").forEach(div => div.style.display = "none");
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        function selectPlace(place) {
+            dateDetails.place = place;
+            display('sectionDate');
+        }
+
+        function selectDate() {
+            let chosenDate = document.getElementById("datePicker").value;
+            if (chosenDate) {
+                dateDetails.date = chosenDate;
+                display('sectionOutfit');
+            } else {
+                alert("Please select a date!");
+            }
+        }
+
+        function selectOutfit(outfit) {
+            dateDetails.outfit = outfit;
+            display('sectionTime');
+        }
+
+        function selectTime() {
+            let chosenTime = document.getElementById("timePicker").value;
+            if (chosenTime) {
+                dateDetails.time = chosenTime;
+                document.getElementById("finalPlace").innerText = dateDetails.place;
+                document.getElementById("finalDate").innerText = dateDetails.date;
+                document.getElementById("finalOutfit").innerText = dateDetails.outfit;
+                document.getElementById("finalTime").innerText = dateDetails.time;
+                display('sectionFinalpage');
+            } else {
+                alert("Please select a time!");
+            }
+        }
+    </script>
+
+</body>
+</html>
